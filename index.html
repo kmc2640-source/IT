@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ramen Timer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <img src="assets/ramen-mark.svg" alt="" class="brand-mark" />
+          <div>
+            <p class="eyebrow">CUP NOODLE TIMER</p>
+            <h1>Ramen Timer</h1>
+          </div>
+        </div>
+        <button class="icon-button" id="soundToggle" type="button" aria-pressed="true" title="アラーム音">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="solid" d="M4 9v6h4l5 4V5L8 9H4Z" />
+            <path class="sound-wave" d="M16 8.5a4 4 0 0 1 0 7" />
+            <path class="sound-wave" d="M18.5 6a7 7 0 0 1 0 12" />
+          </svg>
+        </button>
+      </header>
+
+      <main class="workspace">
+        <section class="setup-panel" aria-labelledby="setupTitle">
+          <div class="section-heading">
+            <p class="eyebrow">MY CUP</p>
+            <h2 id="setupTitle">タイマー設定</h2>
+          </div>
+
+          <form class="timer-form" id="timerForm">
+            <label>
+              <span>カップ麺名</span>
+              <input id="noodleName" name="noodleName" type="text" maxlength="32" placeholder="シーフードヌードル" autocomplete="off" required />
+            </label>
+
+            <div class="time-row" aria-label="時間設定">
+              <label>
+                <span>分</span>
+                <input id="minutesInput" name="minutes" type="number" min="0" max="99" inputmode="numeric" value="3" required />
+              </label>
+              <label>
+                <span>秒</span>
+                <input id="secondsInput" name="seconds" type="number" min="0" max="59" inputmode="numeric" value="0" required />
+              </label>
+            </div>
+
+            <div class="action-row">
+              <button class="primary-button" id="startCustomButton" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path class="solid" d="M8 5v14l11-7L8 5Z" />
+                </svg>
+                スタート
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="timer-stage" aria-live="polite">
+          <div class="timer-orbit" id="timerOrbit">
+            <div class="timer-face">
+              <p class="current-label" id="currentNoodle">シーフードヌードル</p>
+              <p class="time-display" id="timeDisplay">03:00</p>
+              <p class="status-text" id="statusText">READY</p>
+            </div>
+          </div>
+
+          <div class="timer-controls" role="group" aria-label="タイマー操作">
+            <button class="control-button" id="resetButton" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 7a8 8 0 1 1-1.7 8" />
+                <path d="M6 3v4H2" />
+              </svg>
+              リセット
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
